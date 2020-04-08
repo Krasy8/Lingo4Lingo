@@ -14,6 +14,10 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
         http.authorizeRequests()
                 .antMatchers("/register").permitAll()
                 .antMatchers("/confirm").permitAll();
+
+        // dodalem ponizsze, aby przetestowac POST request w Postmanie, bo krzyczal
+        // mi blad 403 Forbidden. Ogolnie to obniza zabezpieczenia aplikacji i
+        // na pewno ustawimy to inaczej.
         http.csrf().disable();
     }
 }
