@@ -2,15 +2,16 @@ package com.lingo4lingo.lingo.model.enums;
 
 public enum City {
 
-    LONDON(Countries.UNITED_KINGDOM, "London"),
-    MANCHESTER(Countries.UNITED_KINGDOM, "Manchester"),
-    BRISTOL(Countries.UNITED_KINGDOM, "Bristol");
+    LONDON(Country.UNITED_KINGDOM, "London"),
+    MANCHESTER(Country.UNITED_KINGDOM, "Manchester"),
+    BRISTOL(Country.UNITED_KINGDOM, "Bristol"),
+    NEW_YORK(Country.USA, "New York");
 
-    public Countries countries;
+    public Country country;
     public String cityName;
 
-    City(Countries countries, String cityName) {
-        this.countries = countries;
+    City(Country country, String cityName) {
+        this.country = country;
         this.cityName = cityName;
     }
 

@@ -1,0 +1,23 @@
+CREATE TABLE IF NOT EXISTS users (
+    id BINARY(16) primary key,
+    login VARCHAR(45) CHARACTER SET UTF8MB4,
+    password VARCHAR(45) CHARACTER SET UTF8MB4,
+    email VARCHAR(45) CHARACTER SET UTF8MB4 unique,
+    gender VARCHAR(10) CHARACTER SET UTF8MB4,
+    age int,
+    country VARCHAR(45) CHARACTER SET UTF8MB4,
+    city VARCHAR(45) CHARACTER SET UTF8MB4,
+    region_province VARCHAR(45) CHARACTER SET UTF8MB4,
+    language_native_1 VARCHAR(50) CHARACTER SET UTF8MB4,
+    language_native_2 VARCHAR(50) CHARACTER SET UTF8MB4,
+    language_native_3 VARCHAR(50) CHARACTER SET UTF8MB4,
+    language_spoken_1 VARCHAR(50) CHARACTER SET UTF8MB4,
+    language_spoken_2 VARCHAR(50) CHARACTER SET UTF8MB4,
+    language_spoken_3 VARCHAR(50) CHARACTER SET UTF8MB4,
+    language_spoken_4 VARCHAR(50) CHARACTER SET UTF8MB4,
+    language_spoken_5 VARCHAR(50) CHARACTER SET UTF8MB4,
+    language_to_learn VARCHAR(50) CHARACTER SET UTF8MB4,
+    self_description TEXT,
+    created_at DATETIME(6),
+    updated_at DATETIME(6)
+);

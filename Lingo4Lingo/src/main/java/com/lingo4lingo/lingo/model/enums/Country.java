@@ -1,6 +1,6 @@
 package com.lingo4lingo.lingo.model.enums;
 
-public enum Countries {
+public enum Country {
     ALBANIA("Albania"),
     ANDORRA("Andorra"),
     AUSTRIA("Austria"),
@@ -44,10 +44,11 @@ public enum Countries {
     SWEDEN("Sweden"),
     SWITZERLAND("Switzerland"),
     UKRAINE("Ukraine"),
-    UNITED_KINGDOM("United Kingdom");
+    UNITED_KINGDOM("United Kingdom"),
+    USA("United States of America");
 
 
-    Countries(String name) {
+    Country(String name) {
 
     }
 

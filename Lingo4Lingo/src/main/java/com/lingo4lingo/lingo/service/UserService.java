@@ -9,6 +9,8 @@ import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
+import java.util.UUID;
 
 @Service
 @Slf4j
@@ -24,7 +26,7 @@ public class UserService {
         return userList;
     }
 
-    public User getUserById(Long id){
+    public Optional<User> getUserById(UUID id){
         return userRepository.findById(id); //.get
     }
 
@@ -32,12 +34,14 @@ public class UserService {
         userRepository.save(user);
     }
 
-    public void delete(Long id){
+    public void delete(UUID id){
         userRepository.deleteById(id);
+        System.out.println("User with id: " + id + " has been deleted!");
     }
 
-    public  void update(User user, Long id){
+    public void update(User user, UUID id){
         userRepository.save(user);
+        System.out.println("User with id: " + id + " has been updated!");
     }
 
 }
