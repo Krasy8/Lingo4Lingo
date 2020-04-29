@@ -4,10 +4,10 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class LingoApplication {
+public class Lingo4LingoApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(LingoApplication.class, args);
+		SpringApplication.run(Lingo4LingoApplication.class, args);
 	}
 
 }

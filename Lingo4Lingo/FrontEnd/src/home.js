@@ -60,6 +60,14 @@ function displayHomePage() {
                     <Link to="/contact">Contact us</Link>
                   </a>
                 </li>
+                <li className="nav-item px-lg-4">
+                  <a
+                    className="nav-link text-uppercase text-expanded"
+                    href="contact.html"
+                  >
+                    <Link to="/register">Sign up!</Link>
+                  </a>
+                </li>
               </ul>
             </div>
           </div>
@@ -87,7 +95,7 @@ function displayHomePage() {
                   interesting people. Set up an account with us and Meet them!
                 </p>
                 <div className="intro-button mx-auto">
-                  <a className="btn btn-primary btn-xl" href="#">
+                  <a className="btn btn-primary btn-xl" href="/register">
                     Join Us Today!
                   </a>
                 </div>

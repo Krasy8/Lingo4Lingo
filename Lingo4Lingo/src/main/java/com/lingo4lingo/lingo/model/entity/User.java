@@ -1,9 +1,6 @@
 package com.lingo4lingo.lingo.model.entity;
 
-import com.lingo4lingo.lingo.model.enums.City;
-import com.lingo4lingo.lingo.model.enums.Country;
 import com.lingo4lingo.lingo.model.enums.Gender;
-import com.lingo4lingo.lingo.model.enums.Language;
 import lombok.Data;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.GenericGenerator;
@@ -27,7 +24,7 @@ public class User {
 
     private String login;
 
-    @Transient
+//    @Transient
     private String password;
 
     @Email(message = "Please provide a valid e-mail")
@@ -41,50 +38,39 @@ public class User {
 
     private int age;
 
-    @Enumerated(EnumType.STRING)
     @Column(name = "country")
-    private Country country;
+    private String country;
 
-    @Enumerated(EnumType.STRING)
     @Column(name = "city")
-    private City city;
+    private String city;
 
     private String regionProvince;
 
     @Column(name = "language_native_1")
-    @Enumerated(EnumType.STRING)
-    private Language languageNative1;
+    private String languageNative1;
 
     @Column(name = "language_native_2")
-    @Enumerated(EnumType.STRING)
-    private Language languageNative2;
+    private String languageNative2;
 
     @Column(name = "language_native_3")
-    @Enumerated(EnumType.STRING)
-    private Language languageNative3;
+    private String languageNative3;
 
     @Column(name = "language_spoken_1")
-    @Enumerated(EnumType.STRING)
-    private Language languageSpoken1;
+    private String languageSpoken1;
 
     @Column(name = "language_spoken_2")
-    @Enumerated(EnumType.STRING)
-    private Language languageSpoken2;
+    private String languageSpoken2;
 
     @Column(name = "language_spoken_3")
-    @Enumerated(EnumType.STRING)
-    private Language languageSpoken3;
+    private String languageSpoken3;
 
     @Column(name = "language_spoken_4")
-    @Enumerated(EnumType.STRING)
-    private Language languageSpoken4;
+    private String languageSpoken4;
 
     @Column(name = "language_spoken_5")
-    @Enumerated(EnumType.STRING)
-    private Language languageSpoken5;
+    private String languageSpoken5;
 
-    @Enumerated(EnumType.STRING)
-    private Language languageToLearn;
+    private String languageToLearn;
 
     private String selfDescription;
 
@@ -107,11 +93,11 @@ public class User {
                     String email,
             Gender gender,
             int age,
-            Country country,
-            City city,
-            Language languageNative1,
-            Language languageSpoken1,
-            Language languageToLearn
+            String country,
+            String city,
+            String languageNative1,
+            String languageSpoken1,
+            String languageToLearn
     ) {
         this.id = id;
         this.login = login;
@@ -174,19 +160,19 @@ public class User {
         this.age = age;
     }
 
-    public Country getCountry() {
+    public String getCountry() {
         return country;
     }
 
-    public void setCountry(Country country) {
+    public void setCountry(String country) {
         this.country = country;
     }
 
-    public City getCity() {
+    public String getCity() {
         return city;
     }
 
-    public void setCity(City city) {
+    public void setCity(String city) {
         this.city = city;
     }
 
@@ -198,75 +184,75 @@ public class User {
         this.regionProvince = regionProvince;
     }
 
-    public Language getLanguageNative1() {
+    public String getLanguageNative1() {
         return languageNative1;
     }
 
-    public void setLanguageNative1(Language languageNative1) {
+    public void setLanguageNative1(String languageNative1) {
         this.languageNative1 = languageNative1;
     }
 
-    public Language getLanguageNative2() {
+    public String getLanguageNative2() {
         return languageNative2;
     }
 
-    public void setLanguageNative2(Language languageNative2) {
+    public void setLanguageNative2(String languageNative2) {
         this.languageNative2 = languageNative2;
     }
 
-    public Language getLanguageNative3() {
+    public String getLanguageNative3() {
         return languageNative3;
     }
 
-    public void setLanguageNative3(Language languageNative3) {
+    public void setLanguageNative3(String languageNative3) {
         this.languageNative3 = languageNative3;
     }
 
-    public Language getLanguageSpoken1() {
+    public String getLanguageSpoken1() {
         return languageSpoken1;
     }
 
-    public void setLanguageSpoken1(Language languageSpoken1) {
+    public void setLanguageSpoken1(String languageSpoken1) {
         this.languageSpoken1 = languageSpoken1;
     }
 
-    public Language getLanguageSpoken2() {
+    public String getLanguageSpoken2() {
         return languageSpoken2;
     }
 
-    public void setLanguageSpoken2(Language languageSpoken2) {
+    public void setLanguageSpoken2(String languageSpoken2) {
         this.languageSpoken2 = languageSpoken2;
     }
 
-    public Language getLanguageSpoken3() {
+    public String getLanguageSpoken3() {
         return languageSpoken3;
     }
 
-    public void setLanguageSpoken3(Language languageSpoken3) {
+    public void setLanguageSpoken3(String languageSpoken3) {
         this.languageSpoken3 = languageSpoken3;
     }
 
-    public Language getLanguageSpoken4() {
+    public String getLanguageSpoken4() {
         return languageSpoken4;
     }
 
-    public void setLanguageSpoken4(Language languageSpoken4) {
+    public void setLanguageSpoken4(String languageSpoken4) {
         this.languageSpoken4 = languageSpoken4;
     }
 
-    public Language getLanguageSpoken5() {
+    public String getLanguageSpoken5() {
         return languageSpoken5;
     }
 
-    public void setLanguageSpoken5(Language languageSpoken5) {
+    public void setLanguageSpoken5(String languageSpoken5) {
         this.languageSpoken5 = languageSpoken5;
     }
 
-    public Language getLanguageToLearn() {
+    public String getLanguageToLearn() {
         return languageToLearn;
     }
 
-    public void setLanguageToLearn(Language languageToLearn) {
+    public void setLanguageToLearn(String languageToLearn) {
         this.languageToLearn = languageToLearn;
     }
 
