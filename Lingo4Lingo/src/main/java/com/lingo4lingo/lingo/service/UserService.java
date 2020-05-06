@@ -13,12 +13,17 @@ import java.util.Optional;
 import java.util.UUID;
 
 @Service
-@Slf4j
-@RequiredArgsConstructor
+//@Slf4j
+//@RequiredArgsConstructor
 public class UserService {
 
+
+    private final UserRepository userRepository;
+
     @Autowired
-    UserRepository userRepository;
+    public UserService(UserRepository userRepository) {
+        this.userRepository = userRepository;
+    }
 
     public List<User> getAllUsers(){
         List<User> userList = new ArrayList<User>();
@@ -26,7 +31,7 @@ public class UserService {
         return userList;
     }
 
-    public Optional<User> getUserById(UUID id){
+    public Optional<User> getUserById(Long id){
         return userRepository.findById(id); //.get
     }
 
@@ -34,12 +39,12 @@ public class UserService {
         userRepository.save(user);
     }
 
-    public void delete(UUID id){
+    public void delete(Long id){
         userRepository.deleteById(id);
         System.out.println("User with id: " + id + " has been deleted!");
     }
 
-    public void update(User user, UUID id){
+    public void update(User user, Long id){
         userRepository.save(user);
         System.out.println("User with id: " + id + " has been updated!");
     }

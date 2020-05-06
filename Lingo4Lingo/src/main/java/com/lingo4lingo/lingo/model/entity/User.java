@@ -5,34 +5,39 @@ import lombok.Data;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.GenericGenerator;
 import org.hibernate.annotations.UpdateTimestamp;
+import org.springframework.stereotype.Component;
 
 import javax.persistence.*;
 import javax.validation.constraints.Email;
+import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotEmpty;
+import java.time.LocalDateTime;
 import java.util.Date;
 import java.util.UUID;
 
 @Entity(name = "users")
-@Data
+//@Data
 public class User {
 
     @Id
-    @GeneratedValue(generator = "uuid2")
-    @GenericGenerator(name = "uuid2", strategy = "uuid2")
-    @Column(columnDefinition = "BINARY(16)", unique = true)
-    private UUID id;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+//    @GeneratedValue(generator = "uuid2")
+//    @GenericGenerator(name = "uuid2", strategy = "uuid2")
+//    @Column(columnDefinition = "BINARY(16)", unique = true)
+    private Long id;
 
     private String login;
 
 //    @Transient
     private String password;
 
-    @Email(message = "Please provide a valid e-mail")
-    @NotEmpty(message = "Please provide an e-mail")
-    @Column(unique = true)
+//    @Email(message = "Please provide a valid e-mail")
+//    @NotEmpty(message = "Please provide an e-mail")
+//    @Column(unique = true)
+    @NotBlank
     private String email;
 
-    @Enumerated(EnumType.STRING)
+//    @Enumerated(EnumType.STRING)
     @Column(name = "gender")
     private Gender gender;
 
@@ -74,18 +79,18 @@ public class User {
 
     private String selfDescription;
 
-    @CreationTimestamp
-    private Date createdAt;
+//    @CreationTimestamp
+    private LocalDateTime createdAt;
 
-    @UpdateTimestamp
-    private Date updatedAt;
+//    @UpdateTimestamp
+    private LocalDateTime updatedAt;
 
     public User() {
 
     }
 
     public User(
-            UUID id,
+            Long id,
             String login,
             String password,
             @Email(message = "Please provide a valid e-mail")
@@ -112,11 +117,11 @@ public class User {
         this.languageToLearn = languageToLearn;
     }
 
-    public UUID getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(UUID id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
@@ -262,6 +267,22 @@ public class User {
 
     public void setSelfDescription(String selfDescription) {
         this.selfDescription = selfDescription;
+    }
+
+    public LocalDateTime getCreatedAt() {
+        return createdAt;
+    }
+
+    public void setCreatedAt(LocalDateTime createdAt) {
+        this.createdAt = createdAt;
+    }
+
+    public LocalDateTime getUpdatedAt() {
+        return updatedAt;
+    }
+
+    public void setUpdatedAt(LocalDateTime updatedAt) {
+        this.updatedAt = updatedAt;
     }
 
     @Override

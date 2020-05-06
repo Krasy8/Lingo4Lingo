@@ -36,7 +36,7 @@ export class Step3Confirmation extends Component {
       }
     } = this.props;
 
-    axios.post("http://localhost:8080/user", 
+    axios.post("http://localhost:8080/api/userRegistration",
     {
       login,
       password,
@@ -58,12 +58,12 @@ export class Step3Confirmation extends Component {
       selfDescription
     }).then(response => {
       console.log(response)
+      this.props.nextStep();
     })
     .catch(error => {
       console.log(error)
+      this.props.goToStep5();
     })
-
-    this.props.nextStep();
   };
 
   back = (e) => {

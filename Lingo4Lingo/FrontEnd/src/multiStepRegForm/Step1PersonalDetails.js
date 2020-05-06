@@ -1,19 +1,18 @@
-import React, { Component } from "react";
-import {
-  Form,
-  Input,
-  Tooltip,
-  Select,
-  Button,
-  InputNumber,
-  Typography
-} 
-from "antd";
-import { QuestionCircleOutlined } from "@ant-design/icons";
+import React, {Component} from "react";
+import {Button, Form, Input, InputNumber, notification, Select, Tooltip, Typography} from "antd";
+import {QuestionCircleOutlined} from "@ant-design/icons";
 
 
 const { Option } = Select;
 const { Title } = Typography;
+
+const openNotificationWithIcon = type => {
+  notification[type]({
+    message: 'Email Error',
+    description:
+        'The email you have entered is already in use, please choose a different one!',
+  });
+};
 
 const formItemLayout = {
   labelCol: {
@@ -58,16 +57,24 @@ export class Step1PersonalDetails extends Component {
       values,
       handleChangeInput,
       handleChangeSelectAndAge,
-      handleChangeCountry
+      handleChangeCountry,
     } = this.props;
 
     const onFinish = values => {
       console.log('Received values of form: ', values);
-      this.props.nextStep();
-    };
+      fetch(`http://localhost:8080/api/isEmailTaken/${values.email}`)
+          .then((response) => {
+            console.log(response);
+            return response.json();
+          }).then((data) => {
+            data === true ? openNotificationWithIcon('error') : this.props.nextStep();
+          })
+          .catch((error) => {
+            console.log(error);
+          });
+      }
 
     return (
-
       <Form
         {...formItemLayout}
         name="registerPersonalDetails"
@@ -79,7 +86,7 @@ export class Step1PersonalDetails extends Component {
           age: `${values.age}`,
           country: `${values.country}`,
           city: `${values.city}`,
-          province: `${values.province}`
+          province: `${values.province}`,
         }}
         scrollToFirstError
         onFinish={onFinish}
@@ -92,7 +99,7 @@ export class Step1PersonalDetails extends Component {
           label={
             <span>
               Login&nbsp;
-            <Tooltip title="What do you want others to call you?">
+              <Tooltip title="What do you want others to call you?">
                 <QuestionCircleOutlined />
               </Tooltip>
             </span>
@@ -103,11 +110,9 @@ export class Step1PersonalDetails extends Component {
               message: "Please enter your login!",
               whitespace: true,
             },
-          ]}      
+          ]}
         >
-          <Input
-            onChange={handleChangeInput("login")}
-          />
+          <Input onChange={handleChangeInput("login")} />
         </Form.Item>
 
         <Form.Item
@@ -121,10 +126,7 @@ export class Step1PersonalDetails extends Component {
           ]}
           hasFeedback
         >
-          <Input.Password
-            onChange={handleChangeInput("password")}
-
-          />
+          <Input.Password onChange={handleChangeInput("password")} />
         </Form.Item>
 
         <Form.Item
@@ -166,9 +168,7 @@ export class Step1PersonalDetails extends Component {
             },
           ]}
         >
-          <Input
-            onChange={handleChangeInput("email")}          
-          />
+          <Input onChange={handleChangeInput("email")} />
         </Form.Item>
 
         <Form.Item
@@ -185,14 +185,20 @@ export class Step1PersonalDetails extends Component {
             onChange={handleChangeSelectAndAge("gender")}
             dropdownStyle={styleDropdown}
           >
-            <Option className="optionStyle" value="MALE" >MALE</Option>
-            <Option className="optionStyle" value="FEMALE" >FEMALE</Option>
-            <Option className="optionStyle" value="OTHER" >OTHER</Option>
+            <Option className="optionStyle" value="MALE">
+              MALE
+            </Option>
+            <Option className="optionStyle" value="FEMALE">
+              FEMALE
+            </Option>
+            <Option className="optionStyle" value="OTHER">
+              OTHER
+            </Option>
           </Select>
         </Form.Item>
 
-        <Form.Item 
-          name="age" 
+        <Form.Item
+          name="age"
           label="Age"
           rules={[
             {
@@ -203,12 +209,12 @@ export class Step1PersonalDetails extends Component {
         >
           <InputNumber
             value={values.age}
-            onChange={handleChangeSelectAndAge("age")}          
+            onChange={handleChangeSelectAndAge("age")}
           />
         </Form.Item>
 
-        <Form.Item 
-          name="country" 
+        <Form.Item
+          name="country"
           label="Country of Residence"
           rules={[
             {
@@ -237,8 +243,8 @@ export class Step1PersonalDetails extends Component {
           </Select>
         </Form.Item>
 
-        <Form.Item 
-          name="city" 
+        <Form.Item
+          name="city"
           label="City of Residence"
           rules={[
             {
@@ -251,7 +257,7 @@ export class Step1PersonalDetails extends Component {
             value={values.city}
             onChange={handleChangeSelectAndAge("city")}
             showSearch
-            placeholder="Select your City of Residence"
+            placeholder="(Select your City of Residence)"
             dropdownStyle={styleDropdown}
           >
             {values.cities.map((city) => (
@@ -276,15 +282,11 @@ export class Step1PersonalDetails extends Component {
         </Form.Item>
 
         <Form.Item {...tailFormItemLayout}>
-          <Button 
-            type="primary"
-            htmlType="submit"            
-          >
+          <Button type="primary" htmlType="submit">
             Continue
-        </Button>
+          </Button>
         </Form.Item>
       </Form>
-
     );
   };
 }

@@ -2,6 +2,7 @@ package com.lingo4lingo.lingo.controller;
 
 import com.lingo4lingo.lingo.model.entity.User;
 import com.lingo4lingo.lingo.service.UserService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -13,9 +14,9 @@ import java.util.UUID;
 @CrossOrigin(origins = "http://localhost:3000")
 public class UserController {
 
-    final
-    UserService userService;
+    final UserService userService;
 
+    @Autowired
     public UserController(UserService userService) {
         this.userService = userService;
     }
@@ -26,24 +27,24 @@ public class UserController {
     }
 
     @GetMapping("/user/{id}")
-    private Optional<User> getUserById(@PathVariable(value = "id") UUID id) {
+    private Optional<User> getUserById(@PathVariable(value = "id") Long id) {
         return userService.getUserById(id);
     }
 
     @DeleteMapping("/user/{id}")
-    private UUID deleteUser(@PathVariable(value = "id") UUID id) {
+    private Long deleteUser(@PathVariable(value = "id") Long id) {
         userService.delete(id);
         return id;
     }
 
     @PostMapping("/user")
-    private UUID saveUser(@RequestBody User user) {
+    private Long saveUser(@RequestBody User user) {
         userService.saveOrUpdate(user);
         return user.getId();
     }
 
     @PutMapping("/user/{id}")
-    private UUID updateUser(@PathVariable(value = "id") UUID id, @RequestBody User user) {
+    private Long updateUser(@PathVariable(value = "id") Long id, @RequestBody User user) {
         userService.update(user, id);
         return id;
     }

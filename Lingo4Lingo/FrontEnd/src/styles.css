@@ -25,7 +25,9 @@
 .ant-input-number-handler-down-inner,
 .ant-input-password-icon,
 .anticon,
-.ant-form-item-label>label {
+.ant-form-item-label>label,
+.ant-result-title,
+.ant-result-subtitle {
   color: wheat;
 }
 
