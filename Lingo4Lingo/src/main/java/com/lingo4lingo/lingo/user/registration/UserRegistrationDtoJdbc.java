@@ -1,25 +1,26 @@
-package com.lingo4lingo.lingo.repository;
+package com.lingo4lingo.lingo.user.registration;
 
-import com.lingo4lingo.lingo.model.entity.User;
+import com.lingo4lingo.lingo.user.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
 import org.springframework.stereotype.Repository;
 
-import java.time.LocalDateTime;
+import java.time.ZoneId;
+import java.time.ZonedDateTime;
 import java.util.List;
 
 @Repository
-public class UserRegistrationRepository {
+public class UserRegistrationDtoJdbc {
 
     private final JdbcTemplate jdbcTemplate;
 
     @Autowired
-    public UserRegistrationRepository(JdbcTemplate jdbcTemplate) {
+    public UserRegistrationDtoJdbc(JdbcTemplate jdbcTemplate) {
         this.jdbcTemplate = jdbcTemplate;
     }
 
-    public List<String> selectAllCountries() {
+    List<String> selectAllCountries() {
         String sql = "" +
                 "SELECT " +
                 " country_name " +
@@ -31,7 +32,7 @@ public class UserRegistrationRepository {
         return ((resultSet, i) -> resultSet.getString("country_name"));
     }
 
-    public List<String> selectCitiesByCountry(String country) {
+    List<String> selectCitiesByCountry(String country) {
         String sql = "" +
                 "SELECT DISTINCT" +
                 " city_name, " +
@@ -45,7 +46,7 @@ public class UserRegistrationRepository {
         return (((resultSet, i) -> resultSet.getString("city_name")));
     }
 
-    public List<String> selectUniqueLanguages() {
+    List<String> selectUniqueLanguages() {
         String sql = "" +
                 "SELECT DISTINCT" +
                 " official_languages " +
@@ -59,7 +60,7 @@ public class UserRegistrationRepository {
         return (((resultSet, i) -> resultSet.getString("official_languages")));
     }
 
-    public int insertUser(User user) {
+    int insertUser(User user) {
         String sql = "" +
                 "INSERT INTO users (login, password, email, gender, age, country, city, region_province, " +
                 "language_native_1, language_native_2, language_native_3, language_spoken_1, language_spoken_2, " +
@@ -86,12 +87,12 @@ public class UserRegistrationRepository {
                 user.getLanguageSpoken5(),
                 user.getLanguageToLearn(),
                 user.getSelfDescription(),
-                LocalDateTime.now(),
-                LocalDateTime.now()
+                ZonedDateTime.now(ZoneId.of("Z")),
+                ZonedDateTime.now(ZoneId.of("Z"))
         );
     }
 
-    public boolean isEmailTaken(String email) {
+    boolean isEmailTaken(String email) {
         String sql = "" +
                 "SELECT EXISTS (SELECT 1 FROM users WHERE email = ?)";
         return jdbcTemplate.queryForObject(

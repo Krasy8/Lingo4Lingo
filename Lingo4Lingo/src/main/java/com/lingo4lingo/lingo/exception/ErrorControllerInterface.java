@@ -1,4 +1,4 @@
-package com.lingo4lingo.lingo.controller;
+package com.lingo4lingo.lingo.exception;
 
 public interface ErrorControllerInterface {
     String getErrorPath();

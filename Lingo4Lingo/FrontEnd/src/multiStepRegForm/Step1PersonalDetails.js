@@ -62,7 +62,7 @@ export class Step1PersonalDetails extends Component {
 
     const onFinish = values => {
       console.log('Received values of form: ', values);
-      fetch(`http://localhost:8080/api/isEmailTaken/${values.email}`)
+      fetch(`http://localhost:8080/api/v1/user/registration/isEmailTaken/${values.email}`)
           .then((response) => {
             console.log(response);
             return response.json();

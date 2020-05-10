@@ -1,7 +1,6 @@
-package com.lingo4lingo.lingo.controller;
+package com.lingo4lingo.lingo.user.registration;
 
-import com.lingo4lingo.lingo.model.entity.User;
-import com.lingo4lingo.lingo.service.UserRegistrationService;
+import com.lingo4lingo.lingo.user.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -9,7 +8,7 @@ import javax.validation.Valid;
 import java.util.List;
 
 @RestController
-@RequestMapping("api")
+@RequestMapping("api/v1/user/registration")
 @CrossOrigin(origins = "http://localhost:3000")
 public class UserRegistrationController {
 
@@ -35,7 +34,7 @@ public class UserRegistrationController {
         return userRegistrationService.getUniqueLanguages();
     }
 
-    @PostMapping("/userRegistration")
+    @PostMapping("/newUser")
     public void addNewUser(@RequestBody @Valid User user) {
         userRegistrationService.addNewUser(user);
     }

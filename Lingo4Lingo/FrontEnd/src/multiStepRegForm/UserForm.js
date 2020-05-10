@@ -50,7 +50,7 @@ export class UserForm extends Component {
     };
 
     componentDidMount() {
-        fetch("http://localhost:8080/api/countries")
+        fetch("http://localhost:8080/api/v1/user/registration/countries")
             .then((response) => {
                 console.log(response);
                 return response.json();
@@ -78,7 +78,7 @@ export class UserForm extends Component {
                 console.log(error);
             });
 
-        fetch("http://localhost:8080/api/languages")
+        fetch("http://localhost:8080/api/v1/user/registration/languages")
             .then((response) => {
                 console.log(response);
                 return response.json();
@@ -107,7 +107,7 @@ export class UserForm extends Component {
                 country: value,
                 cities: []
             }, () => {
-                fetch(`http://localhost:8080/api/cities/${value}`)
+                fetch(`http://localhost:8080/api/v1/user/registration/cities/${value}`)
                     .then((response) => {
                         console.log(response);
                         return response.json();

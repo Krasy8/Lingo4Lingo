@@ -1,8 +1,6 @@
-package com.lingo4lingo.lingo.controller;
+package com.lingo4lingo.lingo.exception;
 
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.RequestMapping;
+import com.lingo4lingo.lingo.exception.ErrorControllerInterface;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController

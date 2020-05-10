@@ -1,52 +1,35 @@
-package com.lingo4lingo.lingo.model.entity;
-
-import com.lingo4lingo.lingo.model.enums.Gender;
-import lombok.Data;
+package com.lingo4lingo.lingo.user;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import org.hibernate.annotations.CreationTimestamp;
-import org.hibernate.annotations.GenericGenerator;
 import org.hibernate.annotations.UpdateTimestamp;
-import org.springframework.stereotype.Component;
 
 import javax.persistence.*;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
 import java.time.LocalDateTime;
-import java.util.Date;
-import java.util.UUID;
 
 @Entity(name = "users")
-//@Data
 public class User {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-//    @GeneratedValue(generator = "uuid2")
-//    @GenericGenerator(name = "uuid2", strategy = "uuid2")
-//    @Column(columnDefinition = "BINARY(16)", unique = true)
     private Long id;
 
     private String login;
 
-//    @Transient
     private String password;
 
-//    @Email(message = "Please provide a valid e-mail")
-//    @NotEmpty(message = "Please provide an e-mail")
-//    @Column(unique = true)
-    @NotBlank
     private String email;
 
-//    @Enumerated(EnumType.STRING)
-    @Column(name = "gender")
+    @Enumerated(EnumType.STRING)
     private Gender gender;
 
     private int age;
 
-    @Column(name = "country")
     private String country;
 
-    @Column(name = "city")
     private String city;
 
     private String regionProvince;
@@ -69,6 +52,18 @@ public class User {
     @Column(name = "language_spoken_3")
     private String languageSpoken3;
 
+    public LocalDateTime getCreatedAt() {
+        return createdAt;
+    }
+
+    public void setCreatedAt(LocalDateTime createdAt) {
+        this.createdAt = createdAt;
+    }
+
+    public LocalDateTime getUpdatedAt() {
+        return updatedAt;
+    }
+
     @Column(name = "language_spoken_4")
     private String languageSpoken4;
 
@@ -79,30 +74,30 @@ public class User {
 
     private String selfDescription;
 
-//    @CreationTimestamp
+    @CreationTimestamp
+//    @NotNull
+//    @NotBlank
+    @Column(nullable = false, updatable = false)
     private LocalDateTime createdAt;
 
-//    @UpdateTimestamp
+    @UpdateTimestamp
     private LocalDateTime updatedAt;
 
-    public User() {
-
-    }
-
     public User(
-            Long id,
-            String login,
-            String password,
-            @Email(message = "Please provide a valid e-mail")
+            @JsonProperty("id") Long id,
+            @JsonProperty("login") String login,
+            @JsonProperty("password") String password,
+            @JsonProperty("email") @Email(message = "Please provide a valid e-mail")
             @NotEmpty(message = "Please provide " + "an e-mail")
                     String email,
-            Gender gender,
-            int age,
-            String country,
-            String city,
-            String languageNative1,
-            String languageSpoken1,
-            String languageToLearn
+            @JsonProperty("gender") Gender gender,
+            @JsonProperty("age") int age,
+            @JsonProperty("country") String country,
+            @JsonProperty("city") String city,
+            @JsonProperty("languageNative1") String languageNative1,
+            @JsonProperty("languageSpoken1") String languageSpoken1,
+            @JsonProperty("languageToLearn") String languageToLearn
+//            LocalDateTime createdAt, LocalDateTime updatedAt
     ) {
         this.id = id;
         this.login = login;
@@ -115,6 +110,19 @@ public class User {
         this.languageNative1 = languageNative1;
         this.languageSpoken1 = languageSpoken1;
         this.languageToLearn = languageToLearn;
+//        this.createdAt = createdAt;
+//        this.updatedAt = updatedAt;
+    }
+
+    public User() {
+    }
+
+    public User(Long id, String login) {
+
+    }
+
+    public User(Long userId, String login, String password, String email, Gender gender) {
+        this.gender = gender;
     }
 
     public Long getId() {
@@ -269,18 +277,6 @@ public class User {
         this.selfDescription = selfDescription;
     }
 
-    public LocalDateTime getCreatedAt() {
-        return createdAt;
-    }
-
-    public void setCreatedAt(LocalDateTime createdAt) {
-        this.createdAt = createdAt;
-    }
-
-    public LocalDateTime getUpdatedAt() {
-        return updatedAt;
-    }
-
     public void setUpdatedAt(LocalDateTime updatedAt) {
         this.updatedAt = updatedAt;
     }
@@ -310,5 +306,14 @@ public class User {
                 ", createdAt=" + createdAt +
                 ", updatedAt=" + updatedAt +
                 '}';
+    }
+
+    public enum Gender {
+        MALE("Male"),
+        FEMALE("Female"),
+        OTHER("Other");
+
+        Gender(String sex) {
+        }
     }
 }
