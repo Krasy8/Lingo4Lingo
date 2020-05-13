@@ -1,4 +1,5 @@
 package com.lingo4lingo.lingo.user;
+
 import com.fasterxml.jackson.annotation.JsonProperty;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
@@ -52,18 +53,6 @@ public class User {
     @Column(name = "language_spoken_3")
     private String languageSpoken3;
 
-    public LocalDateTime getCreatedAt() {
-        return createdAt;
-    }
-
-    public void setCreatedAt(LocalDateTime createdAt) {
-        this.createdAt = createdAt;
-    }
-
-    public LocalDateTime getUpdatedAt() {
-        return updatedAt;
-    }
-
     @Column(name = "language_spoken_4")
     private String languageSpoken4;
 
@@ -75,8 +64,7 @@ public class User {
     private String selfDescription;
 
     @CreationTimestamp
-//    @NotNull
-//    @NotBlank
+    // @NotNull @NotBlank
     @Column(nullable = false, updatable = false)
     private LocalDateTime createdAt;
 
@@ -275,6 +263,18 @@ public class User {
 
     public void setSelfDescription(String selfDescription) {
         this.selfDescription = selfDescription;
+    }
+
+    public LocalDateTime getCreatedAt() {
+        return createdAt;
+    }
+
+    public void setCreatedAt(LocalDateTime createdAt) {
+        this.createdAt = createdAt;
+    }
+
+    public LocalDateTime getUpdatedAt() {
+        return updatedAt;
     }
 
     public void setUpdatedAt(LocalDateTime updatedAt) {
