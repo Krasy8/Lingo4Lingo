@@ -13,9 +13,9 @@ public class UserMapper implements RowMapper<User> {
         user.setPassword(rs.getString("password"));
         user.setEmail(rs.getString("email"));
         user.setGender(User.Gender.valueOf(rs.getString("gender")));
-        user.setAge(rs.getInt("age"));
-        user.setCountry(rs.getString("country"));
-        user.setCity(rs.getString("city"));
+        user.setDateOfBirth(rs.getDate("date_of_birth"));
+        user.setCountryOfResidence(rs.getString("country_of_residence"));
+        user.setCityOfResidence(rs.getString("city_of_residence"));
         user.setLanguageNative1(rs.getString("language_native_1"));
         user.setLanguageSpoken1(rs.getString("language_spoken_1"));
         user.setRegionProvince(rs.getString("region_province"));

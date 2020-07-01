@@ -1,0 +1,15 @@
+.Button {
+    margin-left: 8px;
+    margin-right: 8px;
+    width: 90px;
+}
+
+.formDiv {
+    /* background-color: rgb(182, 182, 173); */
+    padding-top: 20px;
+    padding-bottom: 15px;
+}
+
+.div-btns {
+    display: flex;
+}

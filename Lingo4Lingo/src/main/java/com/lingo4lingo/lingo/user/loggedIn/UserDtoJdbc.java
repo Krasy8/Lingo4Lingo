@@ -11,8 +11,6 @@ public class UserDtoJdbc {
 
     private final JdbcTemplate jdbcTemplate;
 
-
-
     @Autowired
     public UserDtoJdbc(JdbcTemplate jdbcTemplate) {
         this.jdbcTemplate = jdbcTemplate;
@@ -62,21 +60,21 @@ public class UserDtoJdbc {
         return id;
     }
 
-    Long updateCity(Long id, String city) {
+    Long updateCityOfResidence(Long id, String cityOfResidence) {
         String sql = "" +
                 "UPDATE users " +
-                "SET city = ? " +
+                "SET city_of_residence = ? " +
                 "WHERE id = ?";
-        jdbcTemplate.update(sql, city, id);
+        jdbcTemplate.update(sql, cityOfResidence, id);
         return id;
     }
 
-    Long updateCountry(Long id, String country) {
+    Long updateCountryOfResidence(Long id, String countryOfResidence) {
         String sql = "" +
                 "UPDATE users " +
-                "SET country = ? " +
+                "SET country_of_residence = ? " +
                 "WHERE id = ?";
-        jdbcTemplate.update(sql, country, id);
+        jdbcTemplate.update(sql, countryOfResidence, id);
         return id;
     }
 
