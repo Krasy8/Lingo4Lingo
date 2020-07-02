@@ -3,3 +3,30 @@
         display: block !important;
     }
 }
+
+.div-main {
+    margin-top: 5rem;
+    margin-bottom: 5rem;
+}
+
+.heading-center {
+    margin: auto;
+}
+
+.text-white {
+    color: #6c757d!important;
+}
+
+.ml-auto {
+    margin: auto;
+}
+
+.bg-faded {
+    background-color: aliceblue;
+}
+
+.div-heading {
+    border-color: rgba(47, 23, 15, .9);
+    border-width: thick;
+    border-style: solid;
+}
