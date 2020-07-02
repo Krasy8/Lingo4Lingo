@@ -2,6 +2,7 @@ package com.lingo4lingo.lingo.user.loggedIn.userSearch;
 
 import com.lingo4lingo.lingo.user.User;
 import com.lingo4lingo.lingo.user.UserMapper;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
 
@@ -12,6 +13,7 @@ public class UserSearchDtoJdbc {
 
     private final JdbcTemplate jdbcTemplate;
 
+    @Autowired
     public UserSearchDtoJdbc(JdbcTemplate jdbcTemplate) {
         this.jdbcTemplate = jdbcTemplate;
     }
@@ -81,6 +83,5 @@ public class UserSearchDtoJdbc {
         return jdbcTemplate.query(sql, new Object[]{city, spokenLanguage}, new UserMapper());
 
     }
-
 
 }

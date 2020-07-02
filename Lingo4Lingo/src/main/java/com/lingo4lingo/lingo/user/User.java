@@ -6,10 +6,9 @@ import org.hibernate.annotations.UpdateTimestamp;
 
 import javax.persistence.*;
 import javax.validation.constraints.Email;
-import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotEmpty;
-import javax.validation.constraints.NotNull;
 import java.time.LocalDateTime;
+import java.util.Date;
 
 @Entity(name = "users")
 public class User {
@@ -27,11 +26,11 @@ public class User {
     @Enumerated(EnumType.STRING)
     private Gender gender;
 
-    private int age;
+    private Date dateOfBirth;
 
-    private String country;
+    private String countryOfResidence;
 
-    private String city;
+    private String cityOfResidence;
 
     private String regionProvince;
 
@@ -64,7 +63,6 @@ public class User {
     private String selfDescription;
 
     @CreationTimestamp
-    // @NotNull @NotBlank
     @Column(nullable = false, updatable = false)
     private LocalDateTime createdAt;
 
@@ -79,9 +77,9 @@ public class User {
             @NotEmpty(message = "Please provide " + "an e-mail")
                     String email,
             @JsonProperty("gender") Gender gender,
-            @JsonProperty("age") int age,
-            @JsonProperty("country") String country,
-            @JsonProperty("city") String city,
+            @JsonProperty("dateOfBirth") Date dateOfBirth,
+            @JsonProperty("countryOfResidence") String countryOfResidence,
+            @JsonProperty("cityOfResidence") String cityOfResidence,
             @JsonProperty("languageNative1") String languageNative1,
             @JsonProperty("languageSpoken1") String languageSpoken1,
             @JsonProperty("languageToLearn") String languageToLearn
@@ -92,9 +90,9 @@ public class User {
         this.password = password;
         this.email = email;
         this.gender = gender;
-        this.age = age;
-        this.country = country;
-        this.city = city;
+        this.dateOfBirth = dateOfBirth;
+        this.countryOfResidence = countryOfResidence;
+        this.cityOfResidence = cityOfResidence;
         this.languageNative1 = languageNative1;
         this.languageSpoken1 = languageSpoken1;
         this.languageToLearn = languageToLearn;
@@ -153,28 +151,28 @@ public class User {
         this.gender = gender;
     }
 
-    public int getAge() {
-        return age;
+    public Date getDateOfBirth() {
+        return dateOfBirth;
     }
 
-    public void setAge(int age) {
-        this.age = age;
+    public void setDateOfBirth(Date dateOfBirth) {
+        this.dateOfBirth = dateOfBirth;
     }
 
-    public String getCountry() {
-        return country;
+    public String getCountryOfResidence() {
+        return countryOfResidence;
     }
 
-    public void setCountry(String country) {
-        this.country = country;
+    public void setCountryOfResidence(String countryOfResidence) {
+        this.countryOfResidence = countryOfResidence;
     }
 
-    public String getCity() {
-        return city;
+    public String getCityOfResidence() {
+        return cityOfResidence;
     }
 
-    public void setCity(String city) {
-        this.city = city;
+    public void setCityOfResidence(String cityOfResidence) {
+        this.cityOfResidence = cityOfResidence;
     }
 
     public String getRegionProvince() {
@@ -265,6 +263,10 @@ public class User {
         this.selfDescription = selfDescription;
     }
 
+    public void setUpdatedAt(LocalDateTime updatedAt) {
+        this.updatedAt = updatedAt;
+    }
+
     public LocalDateTime getCreatedAt() {
         return createdAt;
     }
@@ -277,10 +279,6 @@ public class User {
         return updatedAt;
     }
 
-    public void setUpdatedAt(LocalDateTime updatedAt) {
-        this.updatedAt = updatedAt;
-    }
-
     @Override
     public String toString() {
         return "User{" +
@@ -289,9 +287,9 @@ public class User {
                 ", password='" + password + '\'' +
                 ", email='" + email + '\'' +
                 ", gender=" + gender +
-                ", age=" + age +
-                ", country=" + country +
-                ", city=" + city +
+                ", dateOfBirth=" + dateOfBirth +
+                ", countryOfResidence=" + countryOfResidence +
+                ", cityOfResidence=" + cityOfResidence +
                 ", regionProvince='" + regionProvince + '\'' +
                 ", languageNative1=" + languageNative1 +
                 ", languageNative2=" + languageNative2 +

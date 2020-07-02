@@ -62,7 +62,8 @@ public class UserRegistrationDtoJdbc {
 
     int insertUser(User user) {
         String sql = "" +
-                "INSERT INTO users (login, password, email, gender, age, country, city, region_province, " +
+                "INSERT INTO users (login, password, email, gender, date_of_birth, country_of_residence, " +
+                "city_of_residence, region_province, " +
                 "language_native_1, language_native_2, language_native_3, language_spoken_1, language_spoken_2, " +
                 "language_spoken_3, language_spoken_4, language_spoken_5, language_to_learn, self_description, " +
                 "created_at, updated_at) " +
@@ -73,9 +74,9 @@ public class UserRegistrationDtoJdbc {
                 user.getPassword(),
                 user.getEmail(),
                 user.getGender().name().toUpperCase(),
-                user.getAge(),
-                user.getCountry(),
-                user.getCity(),
+                user.getDateOfBirth(),
+                user.getCountryOfResidence(),
+                user.getCityOfResidence(),
                 user.getRegionProvince(),
                 user.getLanguageNative1(),
                 user.getLanguageNative2(),

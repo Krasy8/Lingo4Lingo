@@ -1,6 +1,7 @@
 package com.lingo4lingo.lingo.user.loggedIn.userSearch;
 
 import com.lingo4lingo.lingo.user.User;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -12,11 +13,10 @@ public class UserSearchController {
 
     final UserSearchService userSearchService;
 
+    @Autowired
     public UserSearchController(UserSearchService userSearchService) {
         this.userSearchService = userSearchService;
-
     }
-
 
     @GetMapping("/{city}-{language}")
     public List<User> getUserByLanguageAndCity(@PathVariable String city, @PathVariable String language) {
@@ -40,6 +40,4 @@ public class UserSearchController {
     public List<User> getUserByNativeLanguage (@PathVariable String city, @PathVariable String nativeLanguage){
         return userSearchService.getUserByNativeLanguageAndCity(city, nativeLanguage);
     }
-
-
 }

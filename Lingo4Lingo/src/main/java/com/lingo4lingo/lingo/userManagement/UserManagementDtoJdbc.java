@@ -2,6 +2,7 @@ package com.lingo4lingo.lingo.userManagement;
 
 import com.lingo4lingo.lingo.user.User;
 import com.lingo4lingo.lingo.user.UserMapper;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
 
@@ -12,6 +13,7 @@ public class UserManagementDtoJdbc {
 
     private final JdbcTemplate jdbcTemplate;
 
+    @Autowired
     public UserManagementDtoJdbc(JdbcTemplate jdbcTemplate) {
         this.jdbcTemplate = jdbcTemplate;
     }
@@ -24,9 +26,9 @@ public class UserManagementDtoJdbc {
                 " password, " +
                 " email, " +
                 " gender, " +
-                " age, " +
-                " country, " +
-                " city, " +
+                " date_of_birth, " +
+                " country_of_residence, " +
+                " city_of_residence, " +
                 " region_province, " +
                 " language_native_1, " +
                 " language_native_2, " +
@@ -52,9 +54,9 @@ public class UserManagementDtoJdbc {
                 " password, " +
                 " email, " +
                 " gender, " +
-                " age, " +
-                " country, " +
-                " city, " +
+                " date_of_birth, " +
+                " country_of_residence, " +
+                " city_of_residence, " +
                 " region_province, " +
                 " language_native_1, " +
                 " language_native_2, " +

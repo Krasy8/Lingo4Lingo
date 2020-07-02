@@ -1,0 +1,20 @@
+.ant-tabs {
+    color: #ccc;
+}
+
+.ant-tabs-nav-container-scrolling,
+.ant-tabs-nav-container {
+    background-color: rgba(47, 23, 15, .9);
+}
+
+.ant-tabs-nav .ant-tabs-tab:hover {
+    color: #e6a756;
+}
+
+.ant-tabs-nav .ant-tabs-tab-active {
+    color: #e6a756
+}
+
+.ant-tabs-nav .ant-tabs-tab {
+    font-size: x-large;
+}

@@ -8,12 +8,12 @@ import java.util.List;
 
 @Service
 public class UserSearchService {
+
     final private UserSearchDtoJdbc userSearchDtoJdbc;
 
     @Autowired
     public UserSearchService(UserSearchDtoJdbc userSearchDtoJdbc) {
         this.userSearchDtoJdbc = userSearchDtoJdbc;
-
     }
 
     List<User> getUserByCity(String city) {
@@ -35,6 +35,4 @@ public class UserSearchService {
     List<User> getUserByNativeLanguageAndCity (String city, String language) {
         return userSearchDtoJdbc.getUserByNativeLanguageAndCity(city, language);
     }
-
-
 }
