@@ -373,41 +373,6 @@ class RegistrationForm extends Component {
             >
               <Input onChange={this.inputChangeHandler("login")} />
             </Form.Item>
-          </Col>
-          <Col span={12}>
-            <Form.Item
-              name="languageNative1"
-              label="Native Language 1"
-              rules={[
-                {
-                  required: true,
-                  message: "Please select your Native Language!",
-                },
-              ]}
-            >
-              <Select
-                value={this.state.languageNative1}
-                onChange={this.selectAndAgeChangeHandler("languageNative1")}
-                showSearch
-                placeholder="Select your Native Language"
-                onSearch={this.onSearch}
-              >
-                {this.state.languages.map((language) => (
-                  <Option
-                    className="optionStyle"
-                    key={language.value}
-                    value={language.value}
-                  >
-                    {language.display}
-                  </Option>
-                ))}
-              </Select>
-            </Form.Item>
-          </Col>
-        </Row>
-
-        <Row gutter={16}>
-          <Col span={12}>
             <Form.Item
               name="password"
               label="Password"
@@ -421,32 +386,6 @@ class RegistrationForm extends Component {
             >
               <Input.Password onChange={this.inputChangeHandler("password")} />
             </Form.Item>
-          </Col>
-          <Col span={12}>
-            <Form.Item name="languageNative2" label="Native Language 2">
-              <Select
-                value={this.state.languageNative2}
-                onChange={this.selectAndAgeChangeHandler("languageNative2")}
-                showSearch
-                placeholder="Select your second Native Language"
-                onSearch={this.onSearch}
-              >
-                {this.state.languages.map((language) => (
-                  <Option
-                    className="optionStyle"
-                    key={language.value}
-                    value={language.value}
-                  >
-                    {language.display}
-                  </Option>
-                ))}
-              </Select>
-            </Form.Item>
-          </Col>
-        </Row>
-
-        <Row gutter={16}>
-          <Col span={12}>
             <Form.Item
               name="confirmPassword"
               label="Confirm Password"
@@ -471,32 +410,6 @@ class RegistrationForm extends Component {
             >
               <Input.Password />
             </Form.Item>
-          </Col>
-          <Col span={12}>
-            <Form.Item name="languageNative3" label="Native Language 3">
-              <Select
-                value={this.state.languageNative3}
-                onChange={this.selectAndAgeChangeHandler("languageNative3")}
-                showSearch
-                placeholder="Select your third Native Language"
-                onSearch={this.onSearch}
-              >
-                {this.state.languages.map((language) => (
-                  <Option
-                    className="optionStyle"
-                    key={language.value}
-                    value={language.value}
-                  >
-                    {language.display}
-                  </Option>
-                ))}
-              </Select>
-            </Form.Item>
-          </Col>
-        </Row>
-
-        <Row gutter={16}>
-          <Col span={12}>
             <Form.Item
               name="email"
               label="E-mail"
@@ -513,41 +426,6 @@ class RegistrationForm extends Component {
             >
               <Input onChange={this.inputChangeHandler("email")} />
             </Form.Item>
-          </Col>
-          <Col span={12}>
-            <Form.Item
-              name="languageSpoken1"
-              label="Spoken Language 1"
-              rules={[
-                {
-                  required: true,
-                  message: "Please select your main Spoken Language!",
-                },
-              ]}
-            >
-              <Select
-                value={this.state.languageNative1}
-                onChange={this.selectAndAgeChangeHandler("languageSpoken1")}
-                showSearch
-                placeholder="Select your Spoken Language"
-                onSearch={this.onSearch}
-              >
-                {this.state.languages.map((language) => (
-                  <Option
-                    className="optionStyle"
-                    key={language.value}
-                    value={language.value}
-                  >
-                    {language.display}
-                  </Option>
-                ))}
-              </Select>
-            </Form.Item>
-          </Col>
-        </Row>
-
-        <Row gutter={16}>
-          <Col span={12}>
             <Form.Item
               name="gender"
               label="Gender"
@@ -570,32 +448,6 @@ class RegistrationForm extends Component {
                 </Option>
               </Select>
             </Form.Item>
-          </Col>
-          <Col span={12}>
-            <Form.Item name="languageSpoken2" label="Spoken Language 2">
-              <Select
-                value={this.state.languageSpoken2}
-                onChange={this.selectAndAgeChangeHandler("languageSpoken2")}
-                showSearch
-                placeholder="Select your second Spoken Language"
-                onSearch={this.onSearch}
-              >
-                {this.state.languages.map((language) => (
-                  <Option
-                    className="optionStyle"
-                    key={language.value}
-                    value={language.value}
-                  >
-                    {language.display}
-                  </Option>
-                ))}
-              </Select>
-            </Form.Item>
-          </Col>
-        </Row>
-
-        <Row gutter={16}>
-          <Col span={12}>
             <Form.Item
               name="dateOfBirth"
               label="Date of Birth"
@@ -613,32 +465,6 @@ class RegistrationForm extends Component {
                 style={{ width: "100%" }}
               />
             </Form.Item>
-          </Col>
-          <Col span={12}>
-            <Form.Item name="languageSpoken3" label="Spoken Language 3">
-              <Select
-                value={this.state.languageSpoken3}
-                onChange={this.selectAndAgeChangeHandler("languageSpoken3")}
-                showSearch
-                placeholder="Select your third Spoken Language"
-                onSearch={this.onSearch}
-              >
-                {this.state.languages.map((language) => (
-                  <Option
-                    className="optionStyle"
-                    key={language.value}
-                    value={language.value}
-                  >
-                    {language.display}
-                  </Option>
-                ))}
-              </Select>
-            </Form.Item>
-          </Col>
-        </Row>
-
-        <Row gutter={16}>
-          <Col span={12}>
             <Form.Item
               name="countryOfResidence"
               label="Country of Residence"
@@ -668,32 +494,6 @@ class RegistrationForm extends Component {
                 ))}
               </Select>
             </Form.Item>
-          </Col>
-          <Col span={12}>
-            <Form.Item name="languageSpoken4" label="Spoken Language 4">
-              <Select
-                value={this.state.languageSpoken4}
-                onChange={this.selectAndAgeChangeHandler("languageSpoken4")}
-                showSearch
-                placeholder="Select your fourth Spoken Language"
-                onSearch={this.onSearch}
-              >
-                {this.state.languages.map((language) => (
-                  <Option
-                    className="optionStyle"
-                    key={language.value}
-                    value={language.value}
-                  >
-                    {language.display}
-                  </Option>
-                ))}
-              </Select>
-            </Form.Item>
-          </Col>
-        </Row>
-
-        <Row gutter={16}>
-          <Col span={12}>
             <Form.Item
               name="cityOfResidence"
               label="City of Residence"
@@ -723,8 +523,167 @@ class RegistrationForm extends Component {
                 ))}
               </Select>
             </Form.Item>
+            <Form.Item name="regionProvince" label="Region/Province">
+              <Input
+                onChange={this.inputChangeHandler("regionProvince")}
+                placeholder="Enter your Region/Province/Post Code"
+                className="login"
+              />
+            </Form.Item>
           </Col>
+
           <Col span={12}>
+            <Form.Item
+              name="languageNative1"
+              label="Native Language 1"
+              rules={[
+                {
+                  required: true,
+                  message: "Please select your Native Language!",
+                },
+              ]}
+            >
+              <Select
+                value={this.state.languageNative1}
+                onChange={this.selectAndAgeChangeHandler("languageNative1")}
+                showSearch
+                placeholder="Select your Native Language"
+                onSearch={this.onSearch}
+              >
+                {this.state.languages.map((language) => (
+                  <Option
+                    className="optionStyle"
+                    key={language.value}
+                    value={language.value}
+                  >
+                    {language.display}
+                  </Option>
+                ))}
+              </Select>
+            </Form.Item>
+            <Form.Item name="languageNative2" label="Native Language 2">
+              <Select
+                value={this.state.languageNative2}
+                onChange={this.selectAndAgeChangeHandler("languageNative2")}
+                showSearch
+                placeholder="Select your second Native Language"
+                onSearch={this.onSearch}
+              >
+                {this.state.languages.map((language) => (
+                  <Option
+                    className="optionStyle"
+                    key={language.value}
+                    value={language.value}
+                  >
+                    {language.display}
+                  </Option>
+                ))}
+              </Select>
+            </Form.Item>
+            <Form.Item name="languageNative3" label="Native Language 3">
+              <Select
+                value={this.state.languageNative3}
+                onChange={this.selectAndAgeChangeHandler("languageNative3")}
+                showSearch
+                placeholder="Select your third Native Language"
+                onSearch={this.onSearch}
+              >
+                {this.state.languages.map((language) => (
+                  <Option
+                    className="optionStyle"
+                    key={language.value}
+                    value={language.value}
+                  >
+                    {language.display}
+                  </Option>
+                ))}
+              </Select>
+            </Form.Item>
+            <Form.Item
+              name="languageSpoken1"
+              label="Spoken Language 1"
+              rules={[
+                {
+                  required: true,
+                  message: "Please select your main Spoken Language!",
+                },
+              ]}
+            >
+              <Select
+                value={this.state.languageNative1}
+                onChange={this.selectAndAgeChangeHandler("languageSpoken1")}
+                showSearch
+                placeholder="Select your Spoken Language"
+                onSearch={this.onSearch}
+              >
+                {this.state.languages.map((language) => (
+                  <Option
+                    className="optionStyle"
+                    key={language.value}
+                    value={language.value}
+                  >
+                    {language.display}
+                  </Option>
+                ))}
+              </Select>
+            </Form.Item>
+            <Form.Item name="languageSpoken2" label="Spoken Language 2">
+              <Select
+                value={this.state.languageSpoken2}
+                onChange={this.selectAndAgeChangeHandler("languageSpoken2")}
+                showSearch
+                placeholder="Select your second Spoken Language"
+                onSearch={this.onSearch}
+              >
+                {this.state.languages.map((language) => (
+                  <Option
+                    className="optionStyle"
+                    key={language.value}
+                    value={language.value}
+                  >
+                    {language.display}
+                  </Option>
+                ))}
+              </Select>
+            </Form.Item>
+            <Form.Item name="languageSpoken3" label="Spoken Language 3">
+              <Select
+                value={this.state.languageSpoken3}
+                onChange={this.selectAndAgeChangeHandler("languageSpoken3")}
+                showSearch
+                placeholder="Select your third Spoken Language"
+                onSearch={this.onSearch}
+              >
+                {this.state.languages.map((language) => (
+                  <Option
+                    className="optionStyle"
+                    key={language.value}
+                    value={language.value}
+                  >
+                    {language.display}
+                  </Option>
+                ))}
+              </Select>
+            </Form.Item>
+            <Form.Item name="languageSpoken4" label="Spoken Language 4">
+              <Select
+                value={this.state.languageSpoken4}
+                onChange={this.selectAndAgeChangeHandler("languageSpoken4")}
+                showSearch
+                placeholder="Select your fourth Spoken Language"
+                onSearch={this.onSearch}
+              >
+                {this.state.languages.map((language) => (
+                  <Option
+                    className="optionStyle"
+                    key={language.value}
+                    value={language.value}
+                  >
+                    {language.display}
+                  </Option>
+                ))}
+              </Select>
+            </Form.Item>
             <Form.Item name="languageSpoken5" label="Spoken Language 5">
               <Select
                 value={this.state.languageSpoken5}
@@ -744,20 +703,6 @@ class RegistrationForm extends Component {
                 ))}
               </Select>
             </Form.Item>
-          </Col>
-        </Row>
-
-        <Row gutter={16}>
-          <Col span={12}>
-            <Form.Item name="regionProvince" label="Region/Province">
-              <Input
-                onChange={this.inputChangeHandler("regionProvince")}
-                placeholder="Enter your Region/Province/Post Code"
-                className="login"
-              />
-            </Form.Item>
-          </Col>
-          <Col span={12}>
             <Form.Item
               name="languageToLearn"
               label="Language To Learn"
