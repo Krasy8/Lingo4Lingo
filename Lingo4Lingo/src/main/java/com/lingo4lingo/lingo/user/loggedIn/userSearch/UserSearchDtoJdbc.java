@@ -20,7 +20,7 @@ public class UserSearchDtoJdbc {
 
     public List<User> getUserByCity(String city) {
         final String sql =
-                "SELECT * FROM users WHERE city = ?";
+                "SELECT * FROM users WHERE city_of_residence = ?";
         return jdbcTemplate.query(sql, new Object[]{city}, new UserMapper());
     }
 
@@ -43,7 +43,7 @@ public class UserSearchDtoJdbc {
     public List<User> getUserByLanguageAndCity(String city, String spokenLanguage) {
         final String sql =
                 "SELECT * FROM (" +
-                        "SELECT * From users where city=?)as s " +
+                        "SELECT * From users where city_of_residence=?)as s " +
                         "WHERE MATCH (" +
                         "language_native_1," +
                         "language_native_2," +
@@ -73,7 +73,7 @@ public class UserSearchDtoJdbc {
     public List<User> getUserByNativeLanguageAndCity(String city, String spokenLanguage) {
         final String sql =
                 "SELECT * FROM (" +
-                        "SELECT * From users where city=?)as s " +
+                        "SELECT * From users where city_of_residence=?)as s " +
                         "WHERE MATCH (" +
                         "language_native_1," +
                         "language_native_2," +
