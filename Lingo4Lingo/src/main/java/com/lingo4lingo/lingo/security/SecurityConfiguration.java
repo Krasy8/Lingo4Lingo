@@ -11,13 +11,20 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
-        http.authorizeRequests()
-                .antMatchers("/register").permitAll()
-                .antMatchers("/confirm").permitAll();
-
-        // dodalem ponizsze, aby przetestowac POST request w Postmanie, bo krzyczal
-        // mi blad 403 Forbidden. Ogolnie to obniza zabezpieczenia aplikacji i
-        // na pewno ustawimy to inaczej.
-        http.csrf().disable();
+        http
+                .csrf().disable()
+                .authorizeRequests()
+                .antMatchers("/", "index", "/css/*", "/js/*").permitAll()
+                .antMatchers("/api/v1/user/registration/**").permitAll()
+                .antMatchers("/api/v1/admin/**").hasAnyAuthority("ADMIN_READ", "ADMIN_WRITE")
+                .antMatchers("/api/v1/components/userSearch/**").hasAnyAuthority("USER_READ", "USER_WRITE")
+                .anyRequest()
+                .authenticated()
+                .and()
+                .formLogin()
+                    .permitAll()
+                    .defaultSuccessUrl("/welcome", true)
+                    .passwordParameter("password")
+                    .usernameParameter("login");
     }
 }
