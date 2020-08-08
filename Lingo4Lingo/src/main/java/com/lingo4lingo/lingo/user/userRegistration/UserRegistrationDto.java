@@ -1,23 +1,9 @@
-package com.lingo4lingo.lingo.user;
+package com.lingo4lingo.lingo.user.userRegistration;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonProperty;
-import com.lingo4lingo.lingo.security.securityModel.Role;
-import org.hibernate.annotations.CreationTimestamp;
-import org.hibernate.annotations.UpdateTimestamp;
-
-import javax.persistence.*;
-import javax.validation.constraints.Email;
-import javax.validation.constraints.NotEmpty;
-import java.time.LocalDateTime;
-import java.util.Collection;
 import java.util.Date;
 
-@Entity(name = "users")
-public class User {
+public class UserRegistrationDto {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     private String login;
@@ -26,8 +12,7 @@ public class User {
 
     private String email;
 
-    @Enumerated(EnumType.STRING)
-    private Gender gender;
+    private String gender;
 
     private Date dateOfBirth;
 
@@ -37,102 +22,25 @@ public class User {
 
     private String regionProvince;
 
-    @Column(name = "language_native_1")
     private String languageNative1;
 
-    @Column(name = "language_native_2")
     private String languageNative2;
 
-    @Column(name = "language_native_3")
     private String languageNative3;
 
-    @Column(name = "language_spoken_1")
     private String languageSpoken1;
 
-    @Column(name = "language_spoken_2")
     private String languageSpoken2;
 
-    @Column(name = "language_spoken_3")
     private String languageSpoken3;
 
-    @Column(name = "language_spoken_4")
     private String languageSpoken4;
 
-    @Column(name = "language_spoken_5")
     private String languageSpoken5;
 
     private String languageToLearn;
 
     private String selfDescription;
-
-    @CreationTimestamp
-    @Column(nullable = false, updatable = false)
-    private LocalDateTime createdAt;
-
-    @UpdateTimestamp
-    private LocalDateTime updatedAt;
-
-    private boolean enabled;
-
-    private boolean tokenExpired;
-
-    @JsonIgnore
-    @ManyToMany
-//    @JoinTable(
-//            name = "roles",
-//            joinColumns = @JoinColumn(
-//                    name = "users_id",
-//                    referencedColumnName = "id"
-//            ),
-//            inverseJoinColumns = @JoinColumn(
-//                    name = "roles_id",
-//                    referencedColumnName = "id"
-//            )
-//    )
-    @JoinColumn(name = "users_id")
-    private Collection <Role> roles;
-
-    public User(
-            @JsonProperty("id") Long id,
-            @JsonProperty("login") String login,
-            @JsonProperty("password") String password,
-            @JsonProperty("email") @Email(message = "Please provide a valid e-mail")
-            @NotEmpty(message = "Please provide " + "an e-mail")
-                    String email,
-            @JsonProperty("gender") Gender gender,
-            @JsonProperty("dateOfBirth") Date dateOfBirth,
-            @JsonProperty("countryOfResidence") String countryOfResidence,
-            @JsonProperty("cityOfResidence") String cityOfResidence,
-            @JsonProperty("languageNative1") String languageNative1,
-            @JsonProperty("languageSpoken1") String languageSpoken1,
-            @JsonProperty("languageToLearn") String languageToLearn
-//            LocalDateTime createdAt, LocalDateTime updatedAt
-    ) {
-        this.id = id;
-        this.login = login;
-        this.password = password;
-        this.email = email;
-        this.gender = gender;
-        this.dateOfBirth = dateOfBirth;
-        this.countryOfResidence = countryOfResidence;
-        this.cityOfResidence = cityOfResidence;
-        this.languageNative1 = languageNative1;
-        this.languageSpoken1 = languageSpoken1;
-        this.languageToLearn = languageToLearn;
-//        this.createdAt = createdAt;
-//        this.updatedAt = updatedAt;
-    }
-
-    public User() {
-    }
-
-    public User(Long id, String login) {
-
-    }
-
-    public User(Long userId, String login, String password, String email, Gender gender) {
-        this.gender = gender;
-    }
 
     public Long getId() {
         return id;
@@ -166,11 +74,11 @@ public class User {
         this.email = email;
     }
 
-    public Gender getGender() {
+    public String getGender() {
         return gender;
     }
 
-    public void setGender(Gender gender) {
+    public void setGender(String gender) {
         this.gender = gender;
     }
 
@@ -286,54 +194,14 @@ public class User {
         this.selfDescription = selfDescription;
     }
 
-    public void setUpdatedAt(LocalDateTime updatedAt) {
-        this.updatedAt = updatedAt;
-    }
-
-    public LocalDateTime getCreatedAt() {
-        return createdAt;
-    }
-
-    public void setCreatedAt(LocalDateTime createdAt) {
-        this.createdAt = createdAt;
-    }
-
-    public LocalDateTime getUpdatedAt() {
-        return updatedAt;
-    }
-
-    public boolean isEnabled() {
-        return enabled;
-    }
-
-    public void setEnabled(boolean enabled) {
-        this.enabled = enabled;
-    }
-
-    public boolean isTokenExpired() {
-        return tokenExpired;
-    }
-
-    public void setTokenExpired(boolean tokenExpired) {
-        this.tokenExpired = tokenExpired;
-    }
-
-    public Collection<Role> getRoles() {
-        return roles;
-    }
-
-    public void setRoles(Collection<Role> roles) {
-        this.roles = roles;
-    }
-
     @Override
     public String toString() {
-        return "User{" +
+        return "UserRegistrationDto{" +
                 "id=" + id +
                 ", login='" + login + '\'' +
                 ", password='" + password + '\'' +
                 ", email='" + email + '\'' +
-                ", gender=" + gender +
+                ", gender='" + gender + '\'' +
                 ", dateOfBirth=" + dateOfBirth +
                 ", countryOfResidence='" + countryOfResidence + '\'' +
                 ", cityOfResidence='" + cityOfResidence + '\'' +
@@ -348,20 +216,6 @@ public class User {
                 ", languageSpoken5='" + languageSpoken5 + '\'' +
                 ", languageToLearn='" + languageToLearn + '\'' +
                 ", selfDescription='" + selfDescription + '\'' +
-                ", createdAt=" + createdAt +
-                ", updatedAt=" + updatedAt +
-                ", enabled=" + enabled +
-                ", tokenExpired=" + tokenExpired +
-                ", role=" + roles +
                 '}';
-    }
-
-    public enum Gender {
-        MALE("Male"),
-        FEMALE("Female"),
-        OTHER("Other");
-
-        Gender(String sex) {
-        }
     }
 }
