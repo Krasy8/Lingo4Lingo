@@ -1,9 +1,10 @@
 import React, { Component } from "react";
-import { Form, Input, Button, Checkbox } from "antd";
-import './LogIn.css';
+import { Form, Input, Button, Checkbox, notification } from "antd";
+import "./LogIn.css";
 
-import RegSideDrawer from '../RegSideDrawer/RegSideDrawer'
+import RegSideDrawer from "../RegSideDrawer/RegSideDrawer";
 import RegistrationForm from "../RegSideDrawer/RegistrationForm/RegistrationForm";
+import AuthenticationService from "../../services/auth/AuthenticationService";
 
 const layout = {
   labelCol: {
@@ -20,14 +21,64 @@ const tailLayout = {
   },
 };
 
+const openNotificationWithIcon = (
+  type,
+  placement,
+  messageInfo,
+  descriptionInfo
+) => {
+  notification[type]({
+    message: messageInfo,
+    description: descriptionInfo,
+    placement,
+  });
+};
+
 class LogIn extends Component {
- 
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      authenticated: false,
+    };
+
+    this.onFinish = this.onFinish.bind(this);
+    this.onFinishFailed = this.onFinishFailed.bind(this);
+  }
+
   onFinish = (values) => {
-    console.log("Success:", values);
+    AuthenticationService.executeBasicAuthenticationService(
+      values.username,
+      values.password
+    )
+      .then(() => {
+        AuthenticationService.registerSuccessfulLogin(
+          values.username,
+          values.password
+        );
+        this.setState({ authenticated: true });
+        this.props.onUserAuthorisation();
+
+        console.log("Success:", values);
+      })
+      .catch((error) => {
+        // console.log(error);
+        AuthenticationService.registrationUnsuccessfulLogin(
+          values.username,
+          values.password
+        );
+        this.onFinishFailed(error);
+      });
   };
 
   onFinishFailed = (errorInfo) => {
     console.log("Failed:", errorInfo);
+    openNotificationWithIcon(
+      "error",
+      "topLeft",
+      "Authentication Error",
+      "Provided login and/or password were incorrect! Please try again."
+    );
   };
 
   render() {
@@ -41,7 +92,9 @@ class LogIn extends Component {
                   {/* <span className="section-heading-upper">
                     Hello There!
                   </span> */}
-                  <span className="section-heading-lower">Enter Lingo4Lingo!</span>
+                  <span className="section-heading-lower">
+                    Enter Lingo4Lingo!
+                  </span>
                 </h2>
                 <div className="formDiv">
                   <Form

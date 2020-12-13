@@ -78,36 +78,19 @@ public class User {
 
     @JsonIgnore
     @ManyToMany
-//    @JoinTable(
-//            name = "roles",
-//            joinColumns = @JoinColumn(
-//                    name = "users_id",
-//                    referencedColumnName = "id"
-//            ),
-//            inverseJoinColumns = @JoinColumn(
-//                    name = "roles_id",
-//                    referencedColumnName = "id"
-//            )
-//    )
     @JoinColumn(name = "users_id")
-    private Collection <Role> roles;
+    private Collection<Role> roles;
 
-    public User(
-            @JsonProperty("id") Long id,
-            @JsonProperty("login") String login,
+    public User(@JsonProperty("id") Long id, @JsonProperty("login") String login,
             @JsonProperty("password") String password,
-            @JsonProperty("email") @Email(message = "Please provide a valid e-mail")
-            @NotEmpty(message = "Please provide " + "an e-mail")
-                    String email,
-            @JsonProperty("gender") Gender gender,
-            @JsonProperty("dateOfBirth") Date dateOfBirth,
+            @JsonProperty("email") @Email(message = "Please provide a valid e-mail") @NotEmpty(message = "Please provide "
+                    + "an e-mail") String email,
+            @JsonProperty("gender") Gender gender, @JsonProperty("dateOfBirth") Date dateOfBirth,
             @JsonProperty("countryOfResidence") String countryOfResidence,
             @JsonProperty("cityOfResidence") String cityOfResidence,
             @JsonProperty("languageNative1") String languageNative1,
             @JsonProperty("languageSpoken1") String languageSpoken1,
-            @JsonProperty("languageToLearn") String languageToLearn
-//            LocalDateTime createdAt, LocalDateTime updatedAt
-    ) {
+            @JsonProperty("languageToLearn") String languageToLearn) {
         this.id = id;
         this.login = login;
         this.password = password;
@@ -119,8 +102,6 @@ public class User {
         this.languageNative1 = languageNative1;
         this.languageSpoken1 = languageSpoken1;
         this.languageToLearn = languageToLearn;
-//        this.createdAt = createdAt;
-//        this.updatedAt = updatedAt;
     }
 
     public User() {
@@ -328,38 +309,20 @@ public class User {
 
     @Override
     public String toString() {
-        return "User{" +
-                "id=" + id +
-                ", login='" + login + '\'' +
-                ", password='" + password + '\'' +
-                ", email='" + email + '\'' +
-                ", gender=" + gender +
-                ", dateOfBirth=" + dateOfBirth +
-                ", countryOfResidence='" + countryOfResidence + '\'' +
-                ", cityOfResidence='" + cityOfResidence + '\'' +
-                ", regionProvince='" + regionProvince + '\'' +
-                ", languageNative1='" + languageNative1 + '\'' +
-                ", languageNative2='" + languageNative2 + '\'' +
-                ", languageNative3='" + languageNative3 + '\'' +
-                ", languageSpoken1='" + languageSpoken1 + '\'' +
-                ", languageSpoken2='" + languageSpoken2 + '\'' +
-                ", languageSpoken3='" + languageSpoken3 + '\'' +
-                ", languageSpoken4='" + languageSpoken4 + '\'' +
-                ", languageSpoken5='" + languageSpoken5 + '\'' +
-                ", languageToLearn='" + languageToLearn + '\'' +
-                ", selfDescription='" + selfDescription + '\'' +
-                ", createdAt=" + createdAt +
-                ", updatedAt=" + updatedAt +
-                ", enabled=" + enabled +
-                ", tokenExpired=" + tokenExpired +
-                ", role=" + roles +
-                '}';
+        return "User{" + "id=" + id + ", login='" + login + '\'' + ", password='" + password + '\'' + ", email='"
+                + email + '\'' + ", gender=" + gender + ", dateOfBirth=" + dateOfBirth + ", countryOfResidence='"
+                + countryOfResidence + '\'' + ", cityOfResidence='" + cityOfResidence + '\'' + ", regionProvince='"
+                + regionProvince + '\'' + ", languageNative1='" + languageNative1 + '\'' + ", languageNative2='"
+                + languageNative2 + '\'' + ", languageNative3='" + languageNative3 + '\'' + ", languageSpoken1='"
+                + languageSpoken1 + '\'' + ", languageSpoken2='" + languageSpoken2 + '\'' + ", languageSpoken3='"
+                + languageSpoken3 + '\'' + ", languageSpoken4='" + languageSpoken4 + '\'' + ", languageSpoken5='"
+                + languageSpoken5 + '\'' + ", languageToLearn='" + languageToLearn + '\'' + ", selfDescription='"
+                + selfDescription + '\'' + ", createdAt=" + createdAt + ", updatedAt=" + updatedAt + ", enabled="
+                + enabled + ", tokenExpired=" + tokenExpired + ", role=" + roles + '}';
     }
 
     public enum Gender {
-        MALE("Male"),
-        FEMALE("Female"),
-        OTHER("Other");
+        MALE("Male"), FEMALE("Female"), OTHER("Other");
 
         Gender(String sex) {
         }

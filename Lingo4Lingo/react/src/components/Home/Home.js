@@ -1,11 +1,36 @@
-import React, { Component } from 'react';
+import React, { Component } from "react";
+import { connect } from "react-redux";
 
-import RegSideDrawer from '../RegSideDrawer/RegSideDrawer';
-import RegistrationForm from '../RegSideDrawer/RegistrationForm/RegistrationForm';
-
+import RegSideDrawer from "../RegSideDrawer/RegSideDrawer";
+import RegistrationForm from "../RegSideDrawer/RegistrationForm/RegistrationForm";
 
 class Home extends Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      userAuth: false,
+    };
+  }
   render() {
+    const isLoggedIn = this.props.uAuth;
+    let joinUsBtn;
+
+    if (!isLoggedIn) {
+      joinUsBtn = (
+        <div className="intro-button mx-auto">
+          <button
+            className="btn btn-primary btn-xl"
+            onClick={() => this.sideDrawerHome.showDrawer()}
+          >
+            Join Us Today!
+          </button>
+        </div>
+      );
+    } else {
+      joinUsBtn = null;
+    }
+
     return (
       <div>
         <section className="page-section clearfix">
@@ -29,14 +54,15 @@ class Home extends Component {
                   Do you want to learn a new language, do you need new
                   interesting people. Set up an account with us and Meet them!
                 </p>
-                <div className="intro-button mx-auto">
+                {/* <div className="intro-button mx-auto">
                   <button
                     className="btn btn-primary btn-xl"
                     onClick={() => this.sideDrawerHome.showDrawer()}
                   >
                     Join Us Today!
                   </button>
-                </div>
+                </div> */}
+                {joinUsBtn}
                 <RegSideDrawer
                   ref={(instance) => {
                     this.sideDrawerHome = instance;
@@ -81,6 +107,12 @@ class Home extends Component {
       </div>
     );
   }
+}
+
+const mapStateToProps = (state) => {
+  return {
+    uAuth: state.userAuth,
+  };
 };
 
-export default Home;
+export default connect(mapStateToProps)(Home);
