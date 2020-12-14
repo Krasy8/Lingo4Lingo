@@ -8,9 +8,6 @@ public class ErrorController implements ErrorControllerInterface {
 
     private static final String ERROR_MAPPING = "/error";
 
-//    Wykomentowalem ponizsze bo Spring krzyczal,
-//    ze ma dwie metody probujace zrobic to samo...
-
 //    @RequestMapping(value = ERROR_MAPPING)
 //    public ResponseEntity<String> error() {
 //        return new ResponseEntity<String>(HttpStatus.NOT_FOUND);

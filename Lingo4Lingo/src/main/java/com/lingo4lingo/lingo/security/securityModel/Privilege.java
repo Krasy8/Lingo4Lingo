@@ -16,7 +16,6 @@ public class Privilege {
 
     @JsonIgnore
     @ManyToMany(mappedBy = "privileges")
-//    @JoinColumn(name = "roles_id")
     private Collection <Role> roles;
 
     protected Privilege() {

@@ -17,21 +17,9 @@ public class Role {
 
     @JsonIgnore
     @ManyToMany(mappedBy = "roles")
-//    @JoinColumn(name = "users_id")
     private Collection<User> users;
 
     @ManyToMany
-//    @JoinTable(
-//            name = "privileges",
-//            joinColumns = @JoinColumn(
-//                    name = "role_id",
-//                    referencedColumnName = "id"
-//            ),
-//            inverseJoinColumns = @JoinColumn(
-//                    name = "privilege_id",
-//                    referencedColumnName = "id"
-//            )
-//    )
     @JoinColumn(name = "roles_id")
     private Collection <Privilege> privileges;
 
