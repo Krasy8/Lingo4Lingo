@@ -9,7 +9,7 @@
 
 ![AppWebsite](https://j.gifs.com/zvR2J8.gif)
 
-🔐 Login/SignUp
+🔐 SignUp/LogIn
 
 ![AppSignup](https://j.gifs.com/OMO1zY.gif)
 
