@@ -1,7 +1,8 @@
 # Lingo4Lingo  
   
 
-#### Lingo4Lingo is a web app created for people looking for a place to find native speakers to learn foreign languages from. No school, no tests, just a friendly chat!
+#### Lingo4Lingo is a web app created for people looking for a place to find native speakers to learn foreign languages from. 
+#### No school, no tests, just a friendly chat!
 
 **Main elements of the app:**
 
