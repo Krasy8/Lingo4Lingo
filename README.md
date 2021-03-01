@@ -11,8 +11,6 @@
 
 🔐 Login/SignUp
 
-![AppDemo](https://j.gifs.com/OMO1zY.gif)
-
 🔎 Search engine to look for native speakers with number of search criteria available (under development) 🚧
 
 💬 Live chat (under development) 🚧 
