@@ -7,7 +7,7 @@
 
 📢 Public website
 
-![AppWebsite](https://j.gifs.com/zvR2J8.gif)
+![AppWebsite](https://j.gifs.com/6XgrJ9.gif)
 
 🔐 SignUp/LogIn
 
