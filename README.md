@@ -7,11 +7,13 @@
 
 📢 Public website
 
-![AppDemo](https://j.gifs.com/r8JQvp.gif)
+![AppWebsite](https://j.gifs.com/zvR2J8.gif)
 
 🔐 Login/SignUp
 
-![AppDemo](https://j.gifs.com/OMO1zY.gif)
+![AppSignup](https://j.gifs.com/OMO1zY.gif)
+
+![AppLogin](https://j.gifs.com/0Y1lNv.gif)
 
 🔎 Search engine to look for native speakers with number of search criteria available (under development) 🚧
 
